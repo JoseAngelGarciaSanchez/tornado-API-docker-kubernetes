@@ -1,0 +1,20 @@
+# preprocessing_deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: preprocessing-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: preprocessing
+  template:
+    metadata:
+      labels:
+        app: preprocessing
+    spec:
+      containers:
+      - name: preprocessing
+        image: jagarsanc/my_preprocessing_app:latest
+        ports:
+        - containerPort: 8888
